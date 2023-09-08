@@ -155,3 +155,23 @@ void pattern (int n){           //  1 2 3 4
 //         cout<<endl;
 //     }
 // }
+
+
+
+
+//void pattern1(int n){  
+//     int count1=2;   
+//     int count2=2;                       
+//     for(int i=1;i<=n;i++){   
+//         for(int j=1;j<=n;j++){    // always try to fing the pattern involved among i and j here it is (i+j)
+//             count1=count2;
+//             cout<< i+j;          // by seeing their position
+//         }
+//         cout<<endl;
+//         count1 ++;                         
+//     }                          
+// }
+// 2345
+// 3456
+// 4567
+// 5678
