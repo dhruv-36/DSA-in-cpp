@@ -110,4 +110,18 @@ void pattern (int n){           //  1 2 3 4
 //     }
 // }
 
+// void pattern1(int n){
+//     for(int i=1;i<=n;i++){
+//         for(int j=1;j<=n;j++){
+//             if(i==1||j==1||i==n||j==n){            //     * * * *
+//                 cout<<"*";                         //     *     *
+//             }                                     //      *     *                 * in the boundary condition i.e for i=1,n and j=1,n
+//             else{                                //       * * * *                 else " " in rest of the conditions
+//                 cout<<" ";
+//             }
+//         }
+//         cout<<endl;
+//     }
+// }
+
 
