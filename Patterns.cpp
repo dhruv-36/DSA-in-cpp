@@ -141,4 +141,17 @@ void pattern (int n){           //  1 2 3 4
 //     }
 // }
 
-
+// void pattern1(int n){              //                    *
+//     for(int i=1;i<=n;i++){          //                  ***
+//         for(int j=1;j<=n-i;j++){     //                *****
+//             cout<<" ";            //                  *******
+//         }
+//         for(int k=1;k<=i;k++){             //   just focus on no. stars irrestive of the position of the spaces
+//             cout<<"*";
+//         }
+//         for(int h=1;h<=i-1;h++){          // simillarly for the other half of the triangle which includes stars as left part already made, cant now be updated
+//             cout<<"*";
+//         }
+//         cout<<endl;
+//     }
+// }
