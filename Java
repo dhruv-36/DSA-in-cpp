@@ -1,1 +1,29 @@
-
+/////// FIBONACCI SERIES //////////////////
+class Main{
+    public static void main(String[] args){
+        Scanner input=new Scanner(System.in);
+        int num=input.nextInt();
+        fibbonacci(num);
+    }
+    static void fibbonacci(int n){
+        int a=0,b=1;
+        int rel=0;
+        if(n==1){
+            System.out.print(a);
+        }
+        else if(n==2){
+            System.out.print(a+ " " +b);
+        }
+        else{
+            System.out.print(a+ " "+b+" ");
+            for(int i=3;i<=n;i++){
+                rel=a+b;
+                System.out.print(rel+" ");
+                a=b;
+                b=rel;
+            }
+        }
+        System.out.println("\n"+rel);
+        
+    }
+}
