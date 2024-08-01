@@ -72,11 +72,11 @@ void InsertAtPosition( Node*& head, Node* & tail, int position, int data){
     while(cnt<position-1){
         temp=temp-> next;
         cnt++;
-    }
+    }     ///////////////////////////////////  iss loop ke baat temp apni jagah pe aajayega, lets see whether its need to insert at any position or at the end
     
     // case 3 :  At last position  ( here still tail at the second last node as tail not updated in this function hence need to update the tail also if need to add the node at the last)
     
-    if(temp-> next==NULL){
+    if(temp-> next==NULL){                ///////  mtlb ki previous while loop ke baat 
         InsertAtTail(tail,data);
         return;
     }
@@ -104,7 +104,7 @@ void InsertAtPosition( Node*& head, Node* & tail, int position, int data){
             prev=curr;
             curr=curr-> next;
             cnt++; 
-        }
+        }//////////////////////////////////  yahan pe temp aagya hai apni jagah pe i.e ith position to delete
         // case 3: deleting the last node then updating the tail
         
         if(curr->next==NULL){
