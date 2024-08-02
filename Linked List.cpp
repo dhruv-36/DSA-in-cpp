@@ -428,13 +428,13 @@ void deleteNode(Node* &tail, int value) {
         prev -> next = curr -> next;
 
         //1 Node Linked List
-        if(curr == prev) {    // no tail left as all deleted
+        if(curr == prev) {    // no tail left as all deleted        ///   1 node linked list
             tail = NULL;
         }
 
         //>=2 Node linked list
-        else if(tail == curr ) {    // curr is at last
-            tail = prev;    //// if tail is curr and we are deleting the curr (i.e it is at last)  hence need to handle the tail, it will shift to prev
+        else if(tail == curr ) {    // if tail == curr then we need to save the tail as curr will be deleted hence make sure of that by assigning the  tailto prev to save it
+            tail = prev;    //// if tail is curr and we are deleting the curr (i.e it is at last)  hence need to handle the tail, it will shift to prev to save tail
         }
 
         curr -> next = NULL;
