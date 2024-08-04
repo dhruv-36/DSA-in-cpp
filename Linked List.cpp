@@ -685,3 +685,93 @@ class Solution {
 
 
 
+
+
+
+Add Number Linked Lists
+
+class Solution {
+  public:
+    void insertAtTail(Node* &tail, Node *& head, Node*& newNode){
+        if(tail==NULL && head==NULL){
+            tail=newNode;
+            head=newNode;
+        }
+        else{
+            tail->next= newNode;
+            tail= newNode;
+        }
+    }
+    Node* add(Node* & first, Node* & second){
+        Node *head= NULL;
+        Node * tail= NULL;
+        
+        Node* curr1= first;
+        Node* curr2= second;
+        int carry =0;
+        while(curr1!=NULL && curr2!=NULL){
+            int sum = curr1->data + curr2->data + carry;
+            Node * newNode= new Node(sum%10);  // Hence ony last digit not the carry // Fix: Store only the digit part
+            insertAtTail(tail, head, newNode);
+            carry= sum/10;
+            curr1=curr1->next;
+            curr2=curr2->next;
+        }
+        while(curr1!=NULL){
+            int sum = curr1->data+ carry;
+            Node * newNode= new Node(sum%10);
+            insertAtTail(tail, head, newNode);
+            carry= sum/10;
+            curr1=curr1->next;
+        }
+        while(curr2!=NULL ){
+            int sum =curr2->data + carry;
+            Node * newNode= new Node(sum%10); // Hence ony last digit not the carry // Fix: Store only the digit part
+            insertAtTail(tail, head, newNode);
+            carry= sum/10;
+            curr2=curr2->next;
+        }
+        while(carry!=0){
+            int sum = carry;
+            Node * newNode= new Node(sum%10);
+            insertAtTail(tail, head, newNode);
+            carry= sum/10;
+        }
+        return head;
+        
+    }
+    Node * reverse( Node * & head){
+        Node * curr= head;
+        Node * prev= NULL;
+        Node* forward= NULL;
+        while(curr!=NULL){
+            forward= curr->next;
+            curr->next= prev;
+            prev= curr;
+            curr= forward;
+        }
+        return prev;
+    }
+    Node* addTwoLists(Node* num1, Node* num2) {
+        
+        Node * first = reverse(num1);
+        Node * second= reverse(num2);
+        
+        Node * addd= add(first , second);
+        Node* rel= reverse(addd);
+        return rel;
+    }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
