@@ -146,3 +146,116 @@ int main() {
     cout << rev;
     return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+GFG 
+Maximum Occuring Character
+char getMaxOccuringChar(string str)
+    {
+        // Your code here
+        int arr[26]={0};
+        int size=str.length();
+        
+        for(int i=0;i<size;i++){
+            int number=0;
+            if(str[i]>='a' && str[i]<='z'){
+                number=str[i]-'a';
+                arr[number] ++;
+            }
+            else if(str[i]>='A' && str[i]<='Z'){
+                number=str[i]-'A';
+                arr[number] ++;
+            }
+            
+        }
+        int max=0;
+        int ans=0;
+        for(int i=0;i<26;i++){
+            if(arr[i]>max){
+                max=arr[i];
+                ans=i;
+            }
+        }
+        char rel='a'+ans;
+        return rel;
+    }
+    
+    
+    
+    ///  APPROACH 2  MAP
+    
+    
+    /*unordered_map< char, int> map;
+        for(int i=0;i<str.length();i++){
+            map[str[i]]++;
+        }
+        
+        int maxCount = 0;
+        char maxchar;
+       
+        
+        
+        for(auto it : map){
+            if(it.second > maxCount ||  it.second == maxCount && maxchar> it.first){
+                maxCount = it.second;   /// count to barabar hai purane ka but naya char kam hai purane se(lexicographically smaller character) 
+                maxchar=it.first;
+               
+            }
+        }
+        return maxchar;
+    } */
+
+
+
+
+
+
+First non-repeating character in a stream
+
+string FirstNonRepeating(string A){
+		    map<char, int> m;
+		    string ans = "";
+		    queue<char> q;
+		    
+		    for(int i=0; i<A.length(); i++) {
+		        char ch = A[i];
+		        
+		        //// queue me push karo
+		        q.push(ch);
+		        
+		        ////   increase count
+		        m[ch]++;
+		        
+		        while(!q.empty()) {
+		            if(m[q.front()] > 1){
+		                // repeating character
+		                q.pop();
+		            }
+		            else
+		            {
+		                // non-repeating character found
+		                ans.push_back(q.front());
+		                break;
+		            }
+		        }
+		        if(q.empty()){
+		            ans.push_back('#');
+		        }
+		    }
+		    return ans;
+		}
+
