@@ -46,7 +46,7 @@ class Stack{
     }
     void push(int element){
         if(size-top>1){
-            top ++;
+            top ++;   //// update first then fill the element into the stack( IMP)
             arr[top]=element;
         }
         else{
