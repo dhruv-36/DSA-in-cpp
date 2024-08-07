@@ -54,8 +54,10 @@ class Stack{
         }
     }
     void pop(){
+       // int ans= arr[top];       IMP: return the top element after the pop operation      IMMPPPP
         if(top>=0){
             top--;
+            //return ans;
         }
         else{
             cout<<"Stack Underflow";
