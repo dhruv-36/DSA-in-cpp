@@ -109,3 +109,20 @@ int main(){
 
 
 
+////////   Reverse a String Using Stack   ///////
+int main(){
+    stack <char> stack;
+    string s="abcd";
+    string ans="";
+    for(int i=0;i<s.length();i++){
+        stack.push(s[i]);
+    }
+    while(!stack.empty()){    /////      stack not empty
+        char ch=stack.top();
+        ans.push_back(ch);
+        stack.pop();
+    }
+    cout<<ans;
+}
+
+
