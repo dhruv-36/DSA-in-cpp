@@ -126,3 +126,89 @@ int main(){
 }
 
 
+
+
+Celebrity Problem(GFG)
+App1:  Brute Force
+int celebrity(vector<vector<int> >& mat) {
+        
+        // code here
+        
+        
+        for(int i=0;i<mat.size();i++){
+            // columns
+            bool isCeleb= true;
+            for(int j=0; j<mat.size();j++){
+                if(i!=j && mat[j][i]==0 ){
+                    isCeleb= false; 
+                    break;
+                }
+            }
+            if(isCeleb){
+                // row
+                for(int j=0; j<mat.size();j++){
+                    if(i!=j && mat[i][j]==1){
+                        isCeleb=false;
+                        break;
+                    }
+                }
+            }
+            if(isCeleb){
+                return i;
+                break;
+            }
+        }
+        return -1;
+    }
+
+App2: Stack
+ int celebrity(vector<vector<int> >& mat) {
+        
+        // code here
+        
+        
+        stack<int> s;
+        for(int i=0;i<mat.size();i++){
+            s.push(i);
+        }
+        while(s.size()!=1){
+            int a= s.top();
+            s.pop();
+            int b= s.top();
+            s.pop();
+            if(mat[a][b]==1){
+                s.push(b);
+            }
+            else if( mat[b][a]==1){
+                s.push(a);
+            }
+        }
+        int a= s.top();
+        
+        bool col= false;
+        int countr=0;
+        int countc=0;
+        bool row= false;
+        for(int i=0; i< mat.size();i++){
+            if(mat[i][a]==1){
+                countr++;
+            }
+        }
+        if(countr== mat.size()-1){
+            row=true;
+        }
+        for(int i=0; i< mat.size();i++){
+            if(mat[a][i]==0){
+                countc++;
+            }
+        }
+        if(countc== mat.size()){
+            col=true;
+        }
+        if(col && row){
+            return a;
+        }
+        else{
+            return -1;
+        }
+    }
