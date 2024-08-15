@@ -187,4 +187,68 @@ int main() {
     return 0;
 }
 
-5)
+5) Find Smallest Character
+Problem Statement
+You are given a function:
+def SmallestCharacter(s):
+The function accepts a string ‘s’. Implement the function to find the smallest English character which is not present in the given string ‘s’ and return the same.
+Example :
+Input :
+aidubudxd
+Output :
+c
+Explanation :
+Input string contains a and b. So now the smallest character that is not present in the string is c.
+
+char smallestCharacter(string s){
+    
+    char arr[26]={0};
+    for(int i=0;i<s.length();i++){
+        int a= s[i]-'a';
+        arr[a]++;    
+    }
+    for(int i=0; i<26;i++){
+        if(arr[i]==0){
+            return i+'a';
+        
+        }
+    }
+    return '-';
+}
+
+6) Find the word average
+Problem Statement
+ Implement the following function:
+Static float Average(String str){}
+The function accepts a string ‘str’ of length ‘len’ as its arugment. Implement the function to calculate the word average and return the same. Word Average is calculated by finding the average of the ASCII values of all of the letters in a word.
+Note:
+•	‘str’ is not null
+•	Input string will contain only lower case English alphabets
+•	The ASCII value of lower case ‘a’ is 97 while that of ‘z’ is 122
+•	Do not round off your results, it will be automatically rounded off up to 2       decimal places and then displayed 
+Example :                      Explanation :
+Input :  Char       value            S               115
+                                     o               111
+ Str:source                          u               117
+ Output: 109.50                     r                114
+                                    c                99
+                                    e                101
+
+
+float average_string(string s){
+    float a=0;
+    for(int i=0; i<s.length();i++){
+        a+=s[i];
+    }
+    return a/s.length();
+}
+int main() {
+    // Write C++ code here
+    string a="source";
+    cout<<fixed<<setprecision(2)<<average_string(a);   ///////////////<<fixed<<setprecision(2) // used for getting the answer for 2 decimal numbers
+
+    return 0;
+}
+                                   
+
+
