@@ -249,6 +249,99 @@ int main() {
 
     return 0;
 }
-                                   
 
+6) Problem Description :The function accepts two positive integers ‘r’ and ‘unit’ and a positive integer array ‘arr’ of size ‘n’ as its argument ‘r’ represents the number of rats present in an area, ‘unit’ is the amount of food each rat consumes and each ith element of array ‘arr’ represents the amount of food present in ‘i+1’ house number, where 0 <= i
+Note:
+Return -1 if the array is null
+Return 0 if the total amount of food from all houses is not sufficient for all the rats.
+Computed values lie within the integer range.
+Example 
 
+Input:
+r: 7
+unit: 2
+n: 8
+arr: 2 8 3 5 7 4 1 2
+Output:
+4
+
+Explanation:
+Total amount of food required for all rats = r * unit= 7 * 2 = 14.
+
+The amount of food in 1st houses = 2+8+3+5 = 18. Since, amount of food in 1st 4 houses is sufficient for all the rats. Thus, output is 4.
+int rat(int arr[], int r, int n, int util){
+    if(n==0){
+        return -1;
+    }
+    int count =0;
+    int total= r*util;
+    int sum=0;
+    for(int i=0; i<n;i++){
+        sum+=arr[i];
+        count ++;
+        if(sum>=total){
+            return count;
+        }
+    }
+    
+    return 0;
+    
+}
+
+8) You are given a function.
+int CheckPassword(char str[], int n);
+The function accepts string str of size n as an argument. Implement the function which returns 1 if given string str is valid password else 0.
+str is a valid password if it satisfies the below conditions.
+– At least 4 characters
+– At least one numeric digit
+– At Least one Capital Letter
+– Must not have space or slash (/)
+– Starting character must not be a number
+Assumption:
+Input string will not be empty.
+bool password(string s){
+    bool size=false;
+    if(s.length()>=4){
+        size= true;
+    }
+    bool is_numeric= false;
+    for(int i=0;i<s.length();i++){
+        if(isdigit(s[i])){
+            is_numeric=true;
+        }
+    }
+    bool is_capital= false;
+    for(int i=0;i<s.length();i++){
+        if(isupper(s[i])){
+            is_capital=true;
+        }
+    }
+    bool start=true;
+    if(isdigit(s[0])){
+        start= false;
+    }
+    bool is_slash=true;
+    for(int i=0;i<s.length();i++){
+        if(s[i]=='/' || s[i]==' '){
+            is_slash=false;
+            break;
+        }
+    }
+    return size && is_capital && start && is_numeric && is_slash; 
+}
+
+9) void greatest(int arr[], int n){
+    int min=INT_MAX;                             ///  for max    int max= INT_MIN;
+    int index=-1;                                ////     if(arr[i]>max){ max= arr[i]; index=i;}
+    for(int i=0;i<n;i++){   /// iterates through n as not comparing between i and i+1;
+        if(arr[i]<min){
+            min=arr[i];
+            index=i;
+        }
+    }
+    cout<<"Element"<<min<<endl;;
+    cout<<"Index"<<index;
+    
+}
+
+10) 
