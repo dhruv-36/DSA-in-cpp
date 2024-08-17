@@ -284,3 +284,56 @@ queue<int> interleave( queue<int> &q){
     return q;
 }
 
+
+
+7) Sum of minimum and maximum elements of all subarrays of size k
+Deque Handling for maxi and mini:      NOTE IMP
+When you remove elements from the maxi and mini deques,
+the comparisons should be done using the back of the deque (pop_back()), 
+not the front. This is because you want to remove elements that are not useful anymore.
+	
+int sumWindow(int arr[], int N, int K) {
+    deque<int> maxi;
+    deque<int> mini;
+
+    // Initialize the deques for the first window
+    for (int i = 0; i < K; i++) {
+        while (!maxi.empty() && arr[maxi.back()] <= arr[i]) {
+            maxi.pop_back();
+        }
+        maxi.push_back(i);
+        while (!mini.empty() && arr[mini.back()] >= arr[i]) {
+            mini.pop_back();
+        }
+        mini.push_back(i);
+    }
+
+    int ans = 0;
+    ans += arr[maxi.front()] + arr[mini.front()];
+
+    // Process the rest of the windows
+    for (int i = K; i < N; i++) {
+        // Remove elements out of this window from the deques
+        if (!maxi.empty() && maxi.front() <= i - K) {
+            maxi.pop_front();
+        }
+        if (!mini.empty() && mini.front() <= i - K) {
+            mini.pop_front();
+        }
+
+        // Add new elements to the deques
+        while (!maxi.empty() && arr[maxi.back()] <= arr[i]) {
+            maxi.pop_back();
+        }
+        maxi.push_back(i);
+        while (!mini.empty() && arr[mini.back()] >= arr[i]) {
+            mini.pop_back();
+        }
+        mini.push_back(i);
+
+        // Add the max and min for this window to the sum
+        ans += arr[maxi.front()] + arr[mini.front()];
+    }
+
+    return ans;
+}
