@@ -344,4 +344,72 @@ bool password(string s){
     
 }
 
-10) 
+10) distance between 3 points (x1, y1) (x2, y2) (x3, y3)
+     double distance(int x1,int x2,int x3,int y1,int y2,int y3){
+    double a= sqrt(pow(x2-x1,2) + pow(y2-y1,2));
+    double b= sqrt(pow(x3-x2,2) + pow(y3-y2,2));
+    return a+b;
+}
+
+11) Counting number of carries in the sum of two numbers
+int is_carry(int a, int b){
+    int carry=0;
+    int sum=0;
+    int count=0;
+    int factor=1;
+    int digit_sum=0;
+    while(a!=0 || b!=0){
+        digit_sum=a%10 +b%10 + carry;
+        if(digit_sum>9){
+            carry=1;
+            count++;
+        }
+        else{
+            carry=0;
+        }
+        sum+=(digit_sum%10)*factor;
+        factor*=10;
+        a=a/10;
+        b=b/10;
+    }
+    return count;
+}
+
+
+12) Write a program to check if two strings are anagrams of each other. An anagram is a word or phrase formed by rearranging 
+the letters of another word or phrase. Your program should return True if the two input strings are anagrams, and False 
+otherwise.
+For example, if the input strings are "listen" and "silent", the program should return True, as both strings can be rearranged 
+to form the same letters.
+Write a program that takes two strings as input and determines whether they are anagrams or not.
+Sample input1:                  Sample input 2:                                   
+listen                               hello
+silent                               world
+Sample output1:                Sample output 2:
+True                                 false
+
+bool anagram(string a, string b) {
+    // Check if the lengths of both strings are the same
+    if (a.length() != b.length()) {
+        return false;
+    }
+
+    int arr1[26] = {0};  // Array to store frequency of characters in string a
+    int arr2[26] = {0};  // Array to store frequency of characters in string b
+
+    for (int i = 0; i < a.length(); i++) {
+        int ch1 = a[i] - 'a';
+        int ch2 = b[i] - 'a';
+        arr1[ch1]++;
+        arr2[ch2]++;
+    }
+
+    // Compare the frequency arrays
+    for (int i = 0; i < 26; i++) {
+        if (arr1[i] != arr2[i]) {
+            return false;
+        }
+    }
+
+    return true;
+}
