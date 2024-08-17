@@ -201,4 +201,86 @@ string FirstNonRepeating(string A){
 		      return s;
 		}
 
-5) 
+5) ////////////   Circular Tour   //////////
+int tour(petrolPump p[],int n)
+    {
+       int deficit = 0;
+       int balance = 0;
+       int start = 0;
+       
+       for(int i=0; i<n; i++) {
+           balance += p[i].petrol - p[i].distance;
+           if(balance < 0) {
+               start = i+1;
+               deficit += balance;
+               balance = 0;
+           }
+       }
+       
+       if(balance + deficit >=0) 
+            return start;
+        return -1;
+       
+    }
+};
+////////////////////////  APPROACH 2 DEQUE ///////////////
+{
+       int balance = 0;
+        int deficit = 0;
+        int start = 0;
+        int front = 0;
+        int rear = 0;
+
+        while (rear < n) {
+            balance += p[rear].petrol - p[rear].distance;
+
+            if (balance < 0) {
+                // If balance is negative, reset front and rear
+                start = rear + 1;
+                front = start;
+                rear = front;
+                deficit += balance;
+                balance = 0; // Reset balance for the next potential start
+            } else {
+                // If balance is positive or zero, move rear forward
+                rear++;
+            }
+
+            // Base condition: If front == rear, check if tour is complete
+            if (front == rear && balance + deficit >= 0) {
+                return start;
+            }
+        }
+
+        // After completing the loop, check if a valid start exists
+        if (balance + deficit >= 0) {
+            return start;
+        }
+
+        return -1; // If no valid starting point exists
+}
+
+6) Interleave of queue
+queue<int> interleave( queue<int> &q){
+    int mid= q.size()/2;
+    queue<int> q1;
+    int i=1;
+    while(i<=mid){
+        int e= q.front();
+        q1.push(e);
+        q.pop();
+        i++;
+    }
+    while(!q1.empty()){
+        int a= q1.front();
+        q1.pop();
+        q.push(a);
+        int e= q.front();
+        q.pop();
+        q.push(e);
+        
+        
+    }
+    return q;
+}
+
