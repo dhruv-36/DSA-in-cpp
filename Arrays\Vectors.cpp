@@ -300,6 +300,76 @@ int floorSqrt(int n) {
 
 
 
+///////////////  GFG   /////////
+
+Array Leaders
+vector<int> leaders(int n, int arr[]) {
+        // Code here
+        vector<int> rel;
+        for(int i=0; i<n;i++){
+            int j=n-1;
+            bool is=true;
+            while(j!=i || arr[i]!=arr[j]){
+                if(arr[i]<arr[j]){
+                    is=false;
+                    break;
+                }
+                else{
+                    j--;
+                }
+            }
+            if(is){
+                rel.push_back(arr[i]);
+            }
+        }
+        return rel;
+    }
 
 
+
+Maximum Score from Subarray Minimums
+int pairWithMaxSum(vector<int> &arr) {
+        // Your code goes here
+         int maxi=INT_MIN;
+       int n= arr.size();
+       for(int i=0;i<n-1;i++){
+           if((arr[i]+arr[i+1])>maxi){
+               maxi=(arr[i]+arr[i+1]);
+           }
+       }
+       return maxi;
+    }
+
+
+Sum of all divisors from 1 to n
+long long sumOfDivisors(int N)
+    {
+        // Write Your Code here
+        long long sum=0;
+        for(int i=1;i<=N;i++){
+            long long s=0;
+            int j=1;
+            while(j<=i){
+                if(i%j==0){
+                    s+=j;
+                }
+                j++;
+            }
+            j=1;
+            sum+=s;
+        }
+        return sum;
+    }
+    
+    // // Write Your Code here
+    //     long long sum = 0;
+    
+    //     for(int i = 1; i <= N; i++) {
+    //         sum += (N / i) * i;
+    //     }
+        
+    //     return sum;
+    // }
+    
+    
 /////////////////////////// Unique / Duplicate Element    ///////////////////////////
