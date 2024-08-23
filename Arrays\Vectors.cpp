@@ -370,6 +370,34 @@ long long sumOfDivisors(int N)
         
     //     return sum;
     // }
+
+
+
     
-    
-/////////////////////////// Unique / Duplicate Element    ///////////////////////////
+/////////////Union of Two Sorted Arrays  /////////
+vector<int> findUnion(int arr1[], int arr2[], int n, int m)
+    {
+        //Your code here
+        //return vector with correct order of elements
+        vector<int> rel;
+        map<int, int>p;
+        for(int i=0;i<n;i++){
+            int a= arr1[i];
+            p[a]++;
+        }
+        for(int i=0;i<m;i++){
+            int a= arr2[i];
+            p[a]++;
+        }
+        for(auto it=p.begin(); it!=p.end();it++){
+            if(it->second>=1){
+                rel.push_back(it->first);
+            }
+        }
+        //sort(rel.begin(), rel.end());
+        return rel;
+    }
+
+
+
+
