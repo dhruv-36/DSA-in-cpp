@@ -417,7 +417,7 @@ bool anagram(string a, string b) {
 
 
 
-///////////  MEDIAN of array  ////////////
+13) ///////////  MEDIAN of array  ////////////
 int main() {
     // Write C++ code here
     vector<int> arr={2,5,1,7};
@@ -432,3 +432,28 @@ int main() {
     cout<<median;
     return 0;
 }
+
+
+
+14)  Equilibrium Index
+int equilibrium_index(vector<int> arr, int size){
+    int left=0;
+    int sum=0;
+    for(int i=0;i<size;i++){
+        sum+=arr[i];
+    }
+    int right= sum;
+    for(int i=0; i< size; i++){
+        
+        right-= arr[i];
+        if(left==right){
+            return i;
+        }
+        left += arr[i];
+    }
+    return -1;
+}
+
+
+
+
