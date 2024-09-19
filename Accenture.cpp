@@ -457,3 +457,34 @@ int equilibrium_index(vector<int> arr, int size){
 
 
 
+
+
+
+Maximum or minimum word in a string
+string word(const string& a) {
+    int s = 0;       // Start index of the current word
+    int maxi = 0;    // Maximum length of the word found
+    int start = 0;   // Start index of the longest word
+    int e=0;
+    for (int i = 0; i < a.length(); i++) {
+        // Use a while loop to find the end of the current word
+        int e = i;
+        while (e < a.length() && a[e] != ' ') {
+            e++;
+        }
+
+        // Calculate the length of the current word
+        int length = e - s;
+        if (length > maxi) {
+            maxi = length;
+            start = s;
+        }
+
+        // Move the start index to the next word
+        i = e; // Skip over the current word
+        s = i + 1; // Update start index for the next word
+    }
+
+    return a.substr(start, maxi);
+}
+
