@@ -488,3 +488,36 @@ string word(const string& a) {
     return a.substr(start, maxi);
 }
 
+
+
+/////Reverse Words in a String/////
+
+string reverse(string a) {
+    string rel = "";
+    for (int i = a.length() - 1; i >= 0; i--) {
+        int e = i;
+
+        // Find the start of the current word
+        while (e >= 0 && a[e] != ' ') {
+            e--;
+        }
+
+        // Append the word in reverse order
+        for (int j = e + 1; j <= i; j++) {
+            rel.push_back(a[j]);
+        }
+
+        // Add a space after the word
+        rel.push_back(' ');
+
+        // Move i to the end of the previous word, skipping the space
+        i = e ;
+    }
+
+    // Remove the last extra space
+    if (!rel.empty() && rel.back() == ' ') {
+        rel.pop_back();
+    }
+
+    return rel;
+}
