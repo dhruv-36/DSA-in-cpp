@@ -521,3 +521,37 @@ string reverse(string a) {
 
     return rel;
 }
+
+
+
+
+////   Next number  //// Accenture Question 2
+
+using namespace std;
+ void find( int index, int length, string ss, vector<string> & rel, string output){
+     if(index>length){
+         rel.push_back(output);
+         return;
+     }
+     for(int i=0; i<ss.length(); i++){
+         output.push_back(ss[i]);
+         find(index+1, length, ss, rel, output);
+         output.pop_back();
+     }
+ }
+string solve(int a, int b){
+    string s= to_string(b);
+    int length= s.length()-1;
+    string ss= to_string(a);
+    vector<string> rel;
+    string output;
+    find(0, length, ss, rel , output );
+    vector<string> ans;
+    for(int i=0; i<rel.size(); i++){
+        if(rel[i]>=s){
+            ans.push_back(rel[i]);
+        }
+    }
+    sort(ans.begin(), ans.end());
+    return ans[0];
+}
