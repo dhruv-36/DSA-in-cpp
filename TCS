@@ -36,3 +36,36 @@ int main(){
     
 }
 
+
+
+
+Removing the duplicates:
+a) string removeDuplicateLetters(string s) {          /////// IMP Concept
+  string ans = "";
+  vector < bool > map(26, false);
+  for (int i = 0; i < s.length(); i++) {
+    if (map[s[i] - 'a'] == false) {
+      ans += s[i];
+      map[s[i] - 'a'] = true;
+    }
+  }
+  return ans;
+}
+
+
+b) void x(string m) {     ////////////////////////  VVVVIIMMPPP Concept
+    string rel;
+    int arr[256] = {0};     ///////  inclues all chars upper, lower, space, nums,  etc, etc....
+
+    for (int i = 0; i < m.length(); i++) {
+        arr[m[i]]++;  // Use ASCII value directly
+    }
+
+    for (int i = 0; i < 256; i++) {
+        if (arr[i] >= 1) {
+            rel.push_back(i);  // i is already ASCII character
+        }
+    }
+
+    cout << rel;
+}
