@@ -104,3 +104,25 @@ void spaces(string s) {
 
     cout << "Largest Word: " << maxi << endl;
 }
+
+
+
+
+
+
+//////////   reverse the words /////
+
+void spaces(string s){
+    reverse(s.begin(), s.end());
+    int start=0;
+    for(int i=0; i<=s.length(); i++){
+        if(s[i]==' '||i==s.length()){////  going till '/n' to include the last char and if space then reverse the word
+            reverse(s.begin()+start, s.begin()+i);
+            start=i+1;
+        }
+    }
+    for(int i=0; i<s.length(); i++){
+        cout<<s[i];
+    }
+}
+
