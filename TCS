@@ -69,3 +69,38 @@ b) void x(string m) {     ////////////////////////  VVVVIIMMPPP Concept
 
     cout << rel;
 }
+
+
+
+
+///////  Words in string ///
+void spaces(string s){
+    int spaces=0;
+    for(int i=0; i<s.length();i++){
+        if(s[i]==' '){
+            spaces++;
+        }
+    }
+    cout<<spaces+1;
+
+
+
+///////  Maximum Word  ////
+void spaces(string s) {
+    string curr = "", maxi = "";
+    int maxLen = 0;
+
+    for (int i = 0; i <= s.length(); i++) { // Use <= to process last word
+        if (s[i] != ' ' && s[i] != '\0') {
+            curr += s[i];
+        } else {
+            if (curr.length() > maxLen) {
+                maxLen = curr.length();
+                maxi = curr;
+            }
+            curr = ""; // Reset for next word
+        }
+    }
+
+    cout << "Largest Word: " << maxi << endl;
+}
